@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- AppStream metadata: what GNOME Software, KDE Discover and Flathub show
+     for the app. From the gjwgit/fluttertmpl Copier template, with the
+     summary and description from .copier-answers.yml. @VERSION@ and
+     @DATE@ are filled in from pubspec.yaml when the Flatpak is built. -->
+<component type="desktop-application">
+  <id>com.togaware.{{ app }}</id>
+  <name>{{ name | e }}</name>
+  <summary>{{ summary | e }}</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <developer id="com.togaware">
+    <name>Togaware</name>
+  </developer>
+  <url type="homepage">https://github.com/{{ owner }}/{{ app }}</url>
+  <url type="bugtracker">https://github.com/{{ owner }}/{{ app }}/issues</url>
+  <launchable type="desktop-id">com.togaware.{{ app }}.desktop</launchable>
+
+  <description>
+{% for para in description.strip().split('\n\n') %}
+    <p>
+{{ para | e | indent(6, true) }}
+    </p>
+{% endfor %}
+  </description>
+
+  <categories>
+{% for category in categories %}
+    <category>{{ category | e }}</category>
+{% endfor %}
+  </categories>
+
+  <keywords>
+{% for keyword in keywords %}
+    <keyword>{{ keyword | e }}</keyword>
+{% endfor %}
+  </keywords>
+
+  <content_rating type="oars-1.1"/>
+
+  <releases>
+    <release version="@VERSION@" date="@DATE@"/>
+  </releases>
+</component>

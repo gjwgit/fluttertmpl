@@ -1,15 +1,26 @@
 # Flutter App Template
 
-A [Copier](https://copier.readthedocs.io) template for the per-app files
-shared by Graham's Flutter apps (radiopod, innerpod, billipod, ...). It
-replaces the hard links into `~/projects/scripts`: each app keeps
-ordinary copies of the files, rendered with its own values, and pulls
-template changes in when it chooses.
+A [Copier](https://copier.readthedocs.io) template for per-app files
+shared by solidui Flutter apps (radiopod, innerpod, billipod, ...). It
+replaces the previous approach of hard links into
+`~/projects/scripts`. Each app now keeps ordinary copies of the files,
+rendered with its own values, and pulls template changes in when it
+chooses.
 
 So far the template covers:
 
 + `snap/snapcraft.yaml`
 + `snap/gui/<app>.desktop`
++ `flatpak/com.togaware.<app>.yml`, `.desktop` and `.metainfo.xml`, only
+  when the answers set `flatpak` (`{}` for a plain Flatpak)
+
+## Adopting a file the app already has
+
+The first update that brings in a file the app already holds, such as an
+existing `flatpak/` manifest, marks the whole file as a conflict, since
+the template has no earlier version to merge from. Take the template's
+version and add back what is particular to the app as local edits; from
+then on updates merge normally.
 
 ## Install Copier
 

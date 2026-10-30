@@ -16,6 +16,11 @@ app:
   help: The pubspec name, also the command and package name.
   default: "{{ _copier_conf.dst_path | basename }}"
 
+owner:
+  type: str
+  help: The GitHub owner of the app's repository.
+  default: gjwgit
+
 name:
   type: str
   help: Display name, for desktop entries, AppStream and the Windows installer.
@@ -53,9 +58,14 @@ snap:
   type: yaml
   default: {}
 
+# 20261030 gjw Leave flatpak unset for an app without a Flatpak, and the
+# flatpak/ folder is not created. {} gives the plain Flatpak; it may add
+# finish-args, modules (files in flatpak/) and icon (default
+# snap/gui/icon.png, which must be square and at most 512x512).
+
 flatpak:
   type: yaml
-  default: {}
+  default: null
 
 windows:
   type: yaml
