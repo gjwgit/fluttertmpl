@@ -6,10 +6,15 @@
 _subdirectory: template
 _templates_suffix: .j2
 _answers_file: .copier-answers.yml
+# 20261030 gjw Jinja comments are {## ##} rather than {# #}, which Inno
+# Setup uses for its own {#Define} references in app-windows.iss.
+
 _envops:
   keep_trailing_newline: true
   trim_blocks: true
   lstrip_blocks: true
+  comment_start_string: "{##"
+  comment_end_string: "##}"
 
 app:
   type: str
@@ -20,6 +25,11 @@ owner:
   type: str
   help: The GitHub owner of the app's repository.
   default: gjwgit
+
+publisher:
+  type: str
+  help: The publisher in the Windows installer.
+  default: Togaware Pty Ltd
 
 name:
   type: str
@@ -46,6 +56,12 @@ keywords:
   type: yaml
   default: []
 
+# 20261030 gjw build.secrets names the GitHub repository secrets the
+# installers workflow passes, by these names, to
+# support/scramble_defines.dart, which scrambles them into
+# dart_defines.json for every release build (radiopod's Podcast Index
+# pair), so they are obfuscated in the binary rather than plain text.
+
 build:
   type: yaml
   default: {}
@@ -66,6 +82,9 @@ snap:
 flatpak:
   type: yaml
   default: null
+
+# 20261030 gjw windows.appid, a GUID from `uuidgen`, gives the Inno Setup
+# installers/app-windows.iss. It must never change once released.
 
 windows:
   type: yaml

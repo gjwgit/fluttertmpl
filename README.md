@@ -13,6 +13,10 @@ So far the template covers:
 + `snap/gui/<app>.desktop`
 + `flatpak/com.togaware.<app>.yml`, `.desktop` and `.metainfo.xml`, only
   when the answers set `flatpak` (`{}` for a plain Flatpak)
++ `installers/deb.sh`, for `make deb` and, with `--bundle`, for the
+  installers workflow
++ `installers/app-windows.iss`, the Inno Setup script, only when the
+  answers set `windows.appid`
 
 ## Adopting a file the app already has
 
