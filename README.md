@@ -40,6 +40,9 @@ For an app (`kind: app`) it also covers, with the app's values:
 + `support/install.mk`, the web install
 + `installers/README.md`, the download page, with sections only for the
   installers the app has
++ `INSTALL.md`, the install guide the CHANGELOG links to on GitHub
+  Pages, listing the installers the app has and the stores set in
+  `stores` (`play`, `snap`)
 + `license.dart`, GPL for an app and MIT for a package, with the
   `copyright` year and owner
 + `installers/app-windows.iss`, the Inno Setup script, only when the

@@ -1,0 +1,50 @@
+# Installation Guide
+
+{% if install.get('prod', true) %}
+The latest version of the app can be run online at
+[{{ app }}.solidcommunity.au](https://{{ app }}.solidcommunity.au) from
+your browser with no installation required. Or else download and
+install a package for your platform from the platform repository or
+else directly from the [Solid Community AU](https://solidcommunity.au)
+repository. The choice is yours:
+{% else %}
+Download and install a package for your platform from the platform
+repository or else directly from the [Solid Community
+AU](https://solidcommunity.au) repository. The choice is yours:
+{% endif %}
+
+<!-- markdownlint-disable MD036 MD013-->
+
+{% if install.get('prod', true) %}
++ **Web**
+  [solidcommunity](https://{{ app }}.solidcommunity.au/);
+{% endif %}
+{% if android %}
++ **Android**
+{% if stores.get('play') %}
+  [Google Play Store](https://play.google.com/store/apps/details?id=com.togaware.{{ app }}) or
+{% else %}
+  Google Play Store - coming soon or
+{% endif %}
+  [apk]({{ install.url }}{{ app }}.apk);
+{% endif %}
++ **iOS**
+  Apple App Store - coming soon;
++ **Linux**
+{% if stores.get('snap') %}
+  [Snap Store](https://snapcraft.io/{{ app }}) or
+{% endif %}
+  [deb]({{ install.url }}{{ app }}_amd64.deb) or
+{% if flatpak is not none %}
+  [flatpak]({{ install.url }}{{ app }}_amd64.flatpak) or
+{% endif %}
+  [snap]({{ install.url }}{{ app }}_amd64.snap) or
+  [zip]({{ install.url }}{{ app }}-linux.zip);
++ **macOS**
+  [dmg]({{ install.url }}{{ app }}-macos.dmg) or
+  [zip]({{ install.url }}{{ app }}-macos.zip);
++ **Windows**
+{% if windows.get('appid') %}
+  [exe]({{ install.url }}{{ app }}-windows-inno.exe) or
+{% endif %}
+  [zip]({{ install.url }}{{ app }}-windows.zip).

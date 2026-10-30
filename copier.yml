@@ -94,6 +94,14 @@ install:
     url: https://solidcommunity.au/installers/
     prod: true
 
+# 20261031 gjw stores says which stores INSTALL.md links to, at their
+# usual URLs for the app: play (the Google Play Store, else "coming
+# soon") and snap (the Snap Store, else left out).
+
+stores:
+  type: yaml
+  default: {}
+
 # 20261030 gjw build.secrets names the GitHub repository secrets the
 # installers workflow passes, by these names, to
 # support/scramble_defines.dart, which scrambles them into
