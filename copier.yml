@@ -49,6 +49,14 @@ publisher:
   help: The publisher in the Windows installer.
   default: Togaware Pty Ltd
 
+# 20261030 gjw The year and owner for license.dart, as the app has it:
+# "2026, Togaware Pty Ltd" or "2025, Software Innovation Institute ANU".
+
+copyright:
+  type: str
+  help: The copyright year and owner for license.dart.
+  default: "2026, Togaware Pty Ltd"
+
 name:
   type: str
   help: Display name, for desktop entries, AppStream and the Windows installer.

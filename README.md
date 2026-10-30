@@ -30,6 +30,10 @@ For an app (`kind: app`) it also covers, with the app's values:
 + `installers/update.sh`, uploading the workflow's installers to
   `install.host`, and `installers/Makefile`
 + `support/install.mk`, the web install
++ `installers/README.md`, the download page, with sections only for the
+  installers the app has
++ `license.dart`, GPL for an app and MIT for a package, with the
+  `copyright` year and owner
 + `installers/app-windows.iss`, the Inno Setup script, only when the
   answers set `windows.appid`
 
