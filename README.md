@@ -7,7 +7,16 @@ replaces the previous approach of hard links into
 rendered with its own values, and pulls template changes in when it
 chooses.
 
-So far the template covers:
+For both apps and packages (`kind`) the template covers the files
+common to every project, copied unchanged:
+
++ `.github/ISSUE_TEMPLATE/*.md` and `.github/pull_request_template.md`
++ `.gitignore`, `.lycheeignore`, `dart_dependency_validator.yaml`
++ `Makefile` and `support/` `flutter.mk`, `git.mk`, `modules.mk`,
+  `loc.sh`, `meld_zip_from_claude.sh`
++ `android/` gradle files, when the answers set `android`
+
+For an app (`kind: app`) it also covers, with the app's values:
 
 + `snap/snapcraft.yaml`
 + `snap/gui/<app>.desktop`
@@ -51,8 +60,11 @@ with the app. The data file is no longer needed.
 With a clean git tree:
 
 ```bash
-copier update --defaults
+make update
 ```
+
+which runs `copier update --defaults`. It replaces `support/update.sh`
+and its hard links into `~/projects/scripts`.
 
 Template changes since the app's recorded version are merged into the
 app's files. Changes made locally in the app are kept, and a clash is

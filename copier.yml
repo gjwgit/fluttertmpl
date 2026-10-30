@@ -16,6 +16,24 @@ _envops:
   comment_start_string: "{##"
   comment_end_string: "##}"
 
+# 20261030 gjw An app gets the installer files (snap/, flatpak/,
+# installers/); a package gets only the files common to both.
+
+kind:
+  type: str
+  help: An app, or a package published to pub.dev.
+  choices: [app, package]
+  default: app
+
+# 20261030 gjw The android gradle files keep the gradle, AGP and kotlin
+# versions in step across the apps. Only for an app that builds for
+# android.
+
+android:
+  type: bool
+  help: Does it build for android?
+  default: "{{ kind == 'app' }}"
+
 app:
   type: str
   help: The pubspec name, also the command and package name.
