@@ -11,6 +11,8 @@ For both apps and packages (`kind`) the template covers the files
 common to every project, copied unchanged:
 
 + `.github/ISSUE_TEMPLATE/*.md` and `.github/pull_request_template.md`
++ `.githooks/` `pre-commit` and `pre-push` (enabled with `git config
+  core.hooksPath .githooks`)
 + `.gitignore`, `.lycheeignore`, `dart_dependency_validator.yaml`
 + `support/` `flutter.mk`, `git.mk`, `modules.mk`, `loc.sh`,
   `meld_zip_from_claude.sh`
