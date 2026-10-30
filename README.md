@@ -19,8 +19,14 @@ common to every project, copied unchanged:
   (`install.prod`) as part of `make ginstall`
 + `android/` gradle files, when the answers set `android`
 
++ `.github/workflows/ci.yaml`, a short caller of this repository's
+  reusable `ci.yaml`
+
 For an app (`kind: app`) it also covers, with the app's values:
 
++ `.github/workflows/installers.yaml`, a short caller of this
+  repository's reusable `installers.yaml`, passing the signing secrets
+  and the app's `build.secrets` by name
 + `snap/snapcraft.yaml`
 + `snap/gui/<app>.desktop`
 + `flatpak/com.togaware.<app>.yml`, `.desktop` and `.metainfo.xml`, only
@@ -95,3 +101,12 @@ Commit, then tag the release. Apps update to the latest tag.
 git tag v0.2.0
 git push --tags
 ```
+
+## Reusable workflows
+
+The jobs of the lint checks and the installer builds live once, in this
+repository's `.github/workflows/`, triggered only by `workflow_call`. Each
+app's rendered caller pins them to the template version the app was last
+updated to, so `make update` moves the app's files and its workflows
+together. A fix to a workflow reaches an app with its next `make update`.
+
