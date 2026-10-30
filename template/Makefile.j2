@@ -27,20 +27,13 @@ DEST=/var/www/html/$(APP)
 
 # The host for the repository of packages, the path on the server to
 # the download folder, and the URL to the downloads.
+#
+# 20261030 gjw From install in .copier-answers.yml, rendered by the
+# gjwgit/fluttertmpl Copier template, rather than tested here by app name.
 
-# Directory basename (e.g., rattle)
-
-DIRBASE := $(notdir $(CURDIR))
-
-ifeq ($(DIRBASE),rattle)
-  REPO=togaware.com
-  RLOC=apps/access/
-  DWLD=https://access.togaware.com/
-else
-  REPO=solidcommunity.au
-  RLOC=/var/www/html/web/installers/
-  DWLD=https://$(REPO)/installers/
-endif
+REPO={{ install.host }}
+RLOC={{ install.folder }}
+DWLD={{ install.url }}
 
 # Set user for ssh to server
 
@@ -62,10 +55,12 @@ INC_BASE=support
 # 20261016 gjw Obfuscate release builds, so for example, the
 # scrambled Podcast Index secret in radiopod is harder to find in
 # the binary. Read by support/flutter.mk to optionally obfuscate.
+#
+# 20261030 gjw For any app with build.secrets in .copier-answers.yml.
+{% if build.get('secrets') %}
 
-ifeq ($(APP),radiopod)
-  OBFUSCATE = --obfuscate --split-debug-info=build/symbols
-endif
+OBFUSCATE = --obfuscate --split-debug-info=build/symbols
+{% endif %}
 
 # Specific Makefiles will be loaded if they are found in
 # INC_BASE. Sometimes the INC_BASE is shared by multiple local
@@ -291,11 +286,14 @@ debin:
 # at the end as it requires interaction (sudo password) and if earlier
 # it will hold up the oher non-interactive builds.
 
-ifeq ($(DIRBASE),rattle)
-GINSTALLS := upload
-else
+# 20261030 gjw install.prod in .copier-answers.yml says whether the app
+# is also installed to the web (rattle is not).
+
+{% if install.get('prod', true) %}
 GINSTALLS := upload prod
-endif
+{% else %}
+GINSTALLS := upload
+{% endif %}
 
 .PHONY: ginstall
 ginstall: $(GINSTALLS)

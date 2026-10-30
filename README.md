@@ -12,8 +12,11 @@ common to every project, copied unchanged:
 
 + `.github/ISSUE_TEMPLATE/*.md` and `.github/pull_request_template.md`
 + `.gitignore`, `.lycheeignore`, `dart_dependency_validator.yaml`
-+ `Makefile` and `support/` `flutter.mk`, `git.mk`, `modules.mk`,
-  `loc.sh`, `meld_zip_from_claude.sh`
++ `support/` `flutter.mk`, `git.mk`, `modules.mk`, `loc.sh`,
+  `meld_zip_from_claude.sh`
++ `Makefile`, with the installer host, folder and URL from `install`,
+  obfuscation when `build.secrets` is set, and the web install
+  (`install.prod`) as part of `make ginstall`
 + `android/` gradle files, when the answers set `android`
 
 For an app (`kind: app`) it also covers, with the app's values:
@@ -24,6 +27,9 @@ For an app (`kind: app`) it also covers, with the app's values:
   when the answers set `flatpak` (`{}` for a plain Flatpak)
 + `installers/deb.sh`, for `make deb` and, with `--bundle`, for the
   installers workflow
++ `installers/update.sh`, uploading the workflow's installers to
+  `install.host`, and `installers/Makefile`
++ `support/install.mk`, the web install
 + `installers/app-windows.iss`, the Inno Setup script, only when the
   answers set `windows.appid`
 
