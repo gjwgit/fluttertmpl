@@ -1,0 +1,8 @@
+# Changes here will be overwritten by Copier. Change a value with
+# `copier update --data key=value` or by editing it here and running
+# `copier update`.
+{% for key, value in _copier_answers.items() if key != 'description' %}
+{{ {key: value} | to_nice_yaml(indent=2) }}
+{%- endfor %}
+description: |
+{{ description.rstrip() | indent(2, true) }}

@@ -1,0 +1,62 @@
+# 20261030 gjw Copier template for the per-app files of Graham's Flutter
+# apps. Answers are recorded in each app's .copier-answers.yml, and
+# `copier update` brings template changes in with a three-way merge,
+# keeping what was changed locally in the app.
+
+_subdirectory: template
+_templates_suffix: .j2
+_answers_file: .copier-answers.yml
+_envops:
+  keep_trailing_newline: true
+  trim_blocks: true
+  lstrip_blocks: true
+
+app:
+  type: str
+  help: The pubspec name, also the command and package name.
+  default: "{{ _copier_conf.dst_path | basename }}"
+
+name:
+  type: str
+  help: Display name, for desktop entries, AppStream and the Windows installer.
+
+summary:
+  type: str
+  help: One line, no full stop.
+
+comment:
+  type: str
+  help: The desktop entry Comment.
+
+description:
+  type: str
+  multiline: true
+  help: Paragraphs separated by a blank line.
+
+categories:
+  type: yaml
+  default: []
+
+keywords:
+  type: yaml
+  default: []
+
+build:
+  type: yaml
+  default: {}
+
+deb:
+  type: yaml
+  default: {}
+
+snap:
+  type: yaml
+  default: {}
+
+flatpak:
+  type: yaml
+  default: {}
+
+windows:
+  type: yaml
+  default: {}
