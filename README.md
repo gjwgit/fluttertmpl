@@ -47,6 +47,10 @@ For an app (`kind: app`) it also covers, with the app's values:
   `copyright` year and owner
 + `installers/app-windows.iss`, the Inno Setup script, only when the
   answers set `windows.appid`
++ `support/winget.sh`, for `make winget`, writing the winget manifests
+  for the uploaded Inno Setup installer, also only with `windows.appid`
+  (`windows.winget` and `windows.url` override the identifier's
+  publisher and the PublisherUrl)
 
 ## Adopting a file the app already has
 

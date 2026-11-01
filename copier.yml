@@ -131,6 +131,12 @@ flatpak:
 
 # 20261030 gjw windows.appid, a GUID from `uuidgen`, gives the Inno Setup
 # installers/app-windows.iss. It must never change once released.
+#
+# 20261101 gjw It also gives support/winget.sh, for `make winget`.
+# windows.winget is the publisher part of the winget PackageIdentifier
+# (<winget>.<Name>), by default the first word of publisher, and
+# windows.url the PublisherUrl, by default https://togaware.com/. Like
+# appid, winget must not change once a package is in winget-pkgs.
 
 windows:
   type: yaml
