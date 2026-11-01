@@ -31,8 +31,9 @@ For an app (`kind: app`) it also covers, with the app's values:
   and the app's `build.secrets` by name
 + `snap/snapcraft.yaml`
 + `snap/gui/<app>.desktop`
-+ `flatpak/com.togaware.<app>.yml`, `.desktop` and `.metainfo.xml`, only
-  when the answers set `flatpak` (`{}` for a plain Flatpak)
++ `installers/flatpak/com.togaware.<app>.yml`, `.desktop` and
+  `.metainfo.xml`, only when the answers set `flatpak` (`{}` for a plain
+  Flatpak)
 + `installers/deb.sh`, for `make deb` and, with `--bundle`, for the
   installers workflow
 + `installers/update.sh`, uploading the workflow's installers to
@@ -55,10 +56,10 @@ For an app (`kind: app`) it also covers, with the app's values:
 ## Adopting a file the app already has
 
 The first update that brings in a file the app already holds, such as an
-existing `flatpak/` manifest, marks the whole file as a conflict, since
-the template has no earlier version to merge from. Take the template's
-version and add back what is particular to the app as local edits; from
-then on updates merge normally.
+existing `installers/flatpak/` manifest, marks the whole file as a
+conflict, since the template has no earlier version to merge from. Take
+the template's version and add back what is particular to the app as
+local edits; from then on updates merge normally.
 
 ## Install Copier
 

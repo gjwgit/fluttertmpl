@@ -16,8 +16,9 @@ _envops:
   comment_start_string: "{##"
   comment_end_string: "##}"
 
-# 20261030 gjw An app gets the installer files (snap/, flatpak/,
-# installers/); a package gets only the files common to both.
+# 20261030 gjw An app gets the installer files (snap/, installers/,
+# with installers/flatpak/); a package gets only the files common to
+# both.
 
 kind:
   type: str
@@ -121,9 +122,9 @@ snap:
   default: {}
 
 # 20261030 gjw Leave flatpak unset for an app without a Flatpak, and the
-# flatpak/ folder is not created. {} gives the plain Flatpak; it may add
-# finish-args, modules (files in flatpak/) and icon (default
-# snap/gui/icon.png, which must be square and at most 512x512).
+# installers/flatpak/ folder is not created. {} gives the plain Flatpak;
+# it may add finish-args, modules (files in installers/flatpak/) and icon
+# (default snap/gui/icon.png, which must be square and at most 512x512).
 
 flatpak:
   type: yaml

@@ -55,8 +55,9 @@ cleanup:
 modules:
 {% if flatpak.get('modules') %}
 
-  # From .copier-answers.yml flatpak.modules, each a file in flatpak/
-  # holding a module that flatpak-builder builds before the app.
+  # From .copier-answers.yml flatpak.modules, each a file in
+  # installers/flatpak/ holding a module that flatpak-builder builds
+  # before the app.
 
 {% for module in flatpak.modules %}
   - {{ module }}
@@ -86,18 +87,18 @@ modules:
           /app/share/icons/hicolor/512x512/apps/com.togaware.{{ app }}.png
     sources:
       - type: dir
-        path: ../build/linux/x64/release/bundle
+        path: ../../build/linux/x64/release/bundle
         dest: bundle
       - type: file
         path: com.togaware.{{ app }}.desktop
       - type: file
         path: com.togaware.{{ app }}.metainfo.xml
       - type: file
-        path: ../pubspec.yaml
+        path: ../../pubspec.yaml
 
       # A Flatpak icon must be square, and no larger than the 512x512
       # folder it installs into.
 
       - type: file
-        path: ../{{ flatpak.get('icon', 'snap/gui/icon.png') }}
+        path: ../../{{ flatpak.get('icon', 'snap/gui/icon.png') }}
         dest-filename: icon.png

@@ -377,12 +377,13 @@ jobs:
           path: ${{ steps.build.outputs.snap }}
 
   # 20261029 gjw The Flatpak, as `make flatpak` builds it locally:
-  # flatpak/com.togaware.APP.yml wraps the shared bundle in the GNOME
-  # runtime. The bundle names Flathub as its runtime repository, so
-  # `flatpak install` fetches the GNOME runtime when it is missing.
+  # installers/flatpak/com.togaware.APP.yml wraps the shared bundle in
+  # the GNOME runtime. The bundle names Flathub as its runtime
+  # repository, so `flatpak install` fetches the GNOME runtime when it is
+  # missing.
   #
-  # 20261030 gjw As for the snap, an app without a flatpak/ folder skips
-  # the build steps, so the shared file suits every app.
+  # 20261030 gjw As for the snap, an app without an installers/flatpak/
+  # folder skips the build steps, so the shared file suits every app.
   #
   # IN FLATHUB'S CONTAINER, because the plain runner will not do it, as
   # radiopod found: Ubuntu's flatpak-builder is too old, and Flathub's
@@ -410,7 +411,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Download the bundle
-        if: hashFiles('flatpak/**') != ''
+        if: hashFiles('installers/flatpak/**') != ''
         uses: actions/download-artifact@v6
         with:
           name: ${{env.APP}}-linux-bundle
@@ -418,23 +419,23 @@ jobs:
       # Where the manifest looks for it, as after a local build.
 
       - name: Unpack the bundle
-        if: hashFiles('flatpak/**') != ''
+        if: hashFiles('installers/flatpak/**') != ''
         run: |
           mkdir -p build/linux/x64/release
           tar -C build/linux/x64/release -xf bundle.tar
           rm bundle.tar
 
       - name: Build Flatpak
-        if: hashFiles('flatpak/**') != ''
+        if: hashFiles('installers/flatpak/**') != ''
         uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
-          manifest-path: flatpak/com.togaware.${{env.APP}}.yml
+          manifest-path: installers/flatpak/com.togaware.${{env.APP}}.yml
           bundle: ${{env.APP}}_amd64.flatpak
-          cache-key: flatpak-builder-${{ hashFiles('flatpak/*.yml') }}
+          cache-key: flatpak-builder-${{ hashFiles('installers/flatpak/*.yml') }}
           upload-artifact: false
 
       - name: Upload flatpak artifact
-        if: hashFiles('flatpak/**') != ''
+        if: hashFiles('installers/flatpak/**') != ''
         uses: actions/upload-artifact@v6
         with:
           name: ${{env.APP}}-linux-flatpak
