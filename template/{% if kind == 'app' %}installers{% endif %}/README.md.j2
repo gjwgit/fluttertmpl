@@ -123,8 +123,8 @@ Then set up your local installation (only required once):
 ln -s ${HOME}/.local/share/{{ app }}/{{ app }} ${HOME}/.local/bin/
 wget https://raw.githubusercontent.com/{{ owner }}/{{ app }}/dev/installers/app.desktop -O ${HOME}/.local/share/applications/{{ app }}.desktop
 sed -i "s/USER/$(whoami)/g" ${HOME}/.local/share/applications/{{ app }}.desktop
-mkdir -p ${HOME}/.local/share/icons/hicolor/256x256/apps/
-wget https://github.com/{{ owner }}/{{ app }}/raw/dev/installers/app.png -O ${HOME}/.local/share/icons/hicolor/256x256/apps/{{ app }}.png
+mkdir -p ${HOME}/.local/share/icons/hicolor/512x512/apps/
+wget https://github.com/{{ owner }}/{{ app }}/raw/dev/assets/images/app_icon_square.png -O ${HOME}/.local/share/icons/hicolor/512x512/apps/{{ app }}.png
 ```
 
 To install for any user on the computer:
@@ -133,7 +133,7 @@ To install for any user on the computer:
 sudo unzip {{ app }}-linux.zip -d /opt/{{ app }}
 sudo ln -s /opt/{{ app }}/{{ app }} /usr/local/bin/
 wget https://raw.githubusercontent.com/{{ owner }}/{{ app }}/dev/installers/app.desktop -O ${HOME}/usr/local/share/applications/{{ app }}.desktop
-wget https://github.com/{{ owner }}/{{ app }}/raw/dev/installers/app.png -O ${HOME}/use/local/share/icons/{{ app }}.png
+wget https://github.com/{{ owner }}/{{ app }}/raw/dev/assets/images/app_icon_square.png -O ${HOME}/use/local/share/icons/{{ app }}.png
 ```
 
 Once installed you can run the app from the GNOME desktop through

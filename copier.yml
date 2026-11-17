@@ -124,7 +124,8 @@ snap:
 # 20261030 gjw Leave flatpak unset for an app without a Flatpak, and the
 # installers/flatpak/ folder is not created. {} gives the plain Flatpak;
 # it may add finish-args, modules (files in installers/flatpak/) and icon
-# (default snap/gui/icon.png, which must be square and at most 512x512).
+# (default assets/images/app_icon_square.png, which must be square and
+# at most 512x512).
 
 flatpak:
   type: yaml
